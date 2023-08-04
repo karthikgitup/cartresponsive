@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light  container-fluid justify-content-between navcont p-3">
+    <div><a class="navbar-brand ps-5  ">90'Shops</a></div>
+    <div onclick="openCart()"><i class="fa-solid fa-cart-shopping pe-5"></i></div>
+   </nav>
+   <h1 class="head">Mobiles</h1>
+   <div class="product-container" id="pcont">
+</div>
+<div class="cart " id="cart">
+    <h1 class="addtocart">Add To Cart</h1>
+    <div class="cart-container" id="cart-container">
+       
+
+   
+    </div>
+    <div class="cart-desc">
+        <div class="cart-border"></div>
+        <div  class="cartdesc-title"><h5>Amount</h5><h5 id="cartdesc-title"></h5></div>
+        <button type="button"  class="cartdesc-btn" onclick="alerts()" >Buy Now</button>
+    </div>
+ <div class="cancel-btn" id="cancel-btn" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></div>
+    </div>
+
+  <script>
+    var productcontainer = document.getElementById("pcont");
+    var cartcontainer = document.getElementById("cart-container");
+    var cartdesctitle = document.getElementById("cartdesc-title");
+    var cart=document.getElementById("cart");
+
+    var arr= [
+    {
+      ImgSrc:
+        "https://m.media-amazon.com/images/I/91ItZJh1FDL._AC_CR0%2C0%2C0%2C0_SX352_SY330_.jpg",
+      CategoryName: "Mobiles",
+      Brand: "Canon,Sony",
+      Price:"20"
+    },
+    {
+      ImgSrc:
+        "https://m.media-amazon.com/images/I/91L9EF-OEGL._AC_UY327_FMwebp_QL65_.jpg",
+      CategoryName: "Mobiles",
+      Brand: "Mi & Realme",
+      Price:"200"
+    },
+    {
+      ImgSrc:
+        "https://m.media-amazon.com/images/I/91ItZJh1FDL._AC_CR0%2C0%2C0%2C0_SX352_SY330_.jpg",
+      CategoryName: "Mobiles",
+      Brand: "HP",
+      Price:"200"
+    },
+    {
+      ImgSrc:
+        "https://m.media-amazon.com/images/I/71V--WZVUIL._AC_UY327_FMwebp_QL65_.jpg",
+      CategoryName: "Mobiles",
+      Brand: "Tripods,Gimbals,Bags",
+      Price:"200"
+    },
+    {
+      ImgSrc:
+        "https://m.media-amazon.com/images/I/51oW-QOqhaL._AC_UY327_FMwebp_QL65_.jpg",
+      CategoryName: "Mobiles",
+      Brand: "Top Rated",
+      Price:"200"
+    },
+    {
+      ImgSrc:
+        "https://m.media-amazon.com/images/I/81Prc5i7hML._AC_UY327_FMwebp_QL65_.jpg",
+      CategoryName: "Mobiles",
+      Brand: "Philips,Nova,Havells & more",
+      Price:"200"
+    },
+    {
+      ImgSrc:
+        "https://m.media-amazon.com/images/I/71Ftzmh3XWL._AC_UY327_FMwebp_QL65_.jpg",
+      CategoryName: "Mobiles",
+      Brand: "Dell",
+      Price:"200"
+    },
+    {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/81Prc5i7hML._AC_UY327_FMwebp_QL65_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Dell",
+        Price:"200"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91ItZJh1FDL._AC_CR0%2C0%2C0%2C0_SX352_SY330_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Canon,Sony",
+        Price:"20"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91L9EF-OEGL._AC_UY327_FMwebp_QL65_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Mi & Realme",
+        Price:"200"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91ItZJh1FDL._AC_CR0%2C0%2C0%2C0_SX352_SY330_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Canon,Sony",
+        Price:"20"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91L9EF-OEGL._AC_UY327_FMwebp_QL65_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Mi & Realme",
+        Price:"200"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91ItZJh1FDL._AC_CR0%2C0%2C0%2C0_SX352_SY330_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Canon,Sony",
+        Price:"20"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91L9EF-OEGL._AC_UY327_FMwebp_QL65_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Mi & Realme",
+        Price:"200"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91ItZJh1FDL._AC_CR0%2C0%2C0%2C0_SX352_SY330_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Canon,Sony",
+        Price:"20"
+      },
+      {
+        ImgSrc:
+          "https://m.media-amazon.com/images/I/91L9EF-OEGL._AC_UY327_FMwebp_QL65_.jpg",
+        CategoryName: "Mobiles",
+        Brand: "Mi & Realme",
+        Price:"200"
+      },
+  ];
+
+    const productdata = `
+      <div class="product">
+        <div class="row prod-row row-cols-1 row-cols-md-4 row-cols-sm-3 row-cols-lg-5">
+          ${arr.map((val, i) => `
+            <div class="col col-container">
+              <div class="col-body">
+                <img src="${val.ImgSrc}" class="cardimg" alt="...">
+                <div class="col-desc">
+                  <h3 class="fs-5 fw-bold prod-title">${val.CategoryName}</h3>
+                  <div class="price-section">
+                    <div class="prod-price"><i class="fa-solid fa-indian-rupee-sign"></i>${val.Price}</div>
+                    <div onclick="makeCart(${i})" class="cart-btn">
+                      <i class="fa-solid fa-cart-shopping pe-4"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `)}
+        </div>
+      </div>
+    `;
+
+    productcontainer.innerHTML = productdata;
+
+    var arry = [];
+    function openCart(){
+       
+        cart.style.display="block";
+        
+    }
+    function closeCart(){
+     
+        cart.style.display="none";
+
+    }
+function alerts(){
+    alert("Your oreder is Placed Successfully");
+}
+    function makeCart(i) {
+      console.log("hi");
+
+      if (!arr[i].Quantity) {
+        arr[i].Quantity = 1; 
+      }
+
+      arry.push(arr[i]); 
+
+      console.log(arry);
+      cartDatas();
+    }
+
+
+    function cartDatas() {
+      const cartData = `
+        ${arry.map((value, i) => `
+          <div class="cart-box" id="cart-box">
+            <div class="cartbox-left"><img src=${value.ImgSrc}></div>
+            <div class="cartbox-right">
+              <h3>${value.CategoryName}</h3>
+              <div class="cart-pricesection">
+                <div>${value.Price}</div>
+                <div onclick="removeCart(${i})">
+                  <i class="fa-solid fa-trash"></i>
+                </div>
+              </div>
+              <div class="cart-input">
+                <input type="number" value="${value.Quantity}" id="cart-inputdata-${i}" onchange="changequantity(${i})">
+              </div>
+            </div>
+          </div>
+        `)}
+      `;
+
+      var sum = 0;
+      arry.forEach((val) => {
+        var quantity = val.Quantity || 1; 
+        sum += parseInt(val.Price) * quantity; 
+      });
+
+      cartdesctitle.innerHTML = sum; 
+
+      cartcontainer.innerHTML = cartData;
+    }
+
+    function changequantity(i) {
+      var cartinputdata = document.getElementById(`cart-inputdata-${i}`).value; 
+      arry[i].Quantity = parseInt(cartinputdata); 
+
+      var sum = 0;
+      arry.forEach((val) => {
+        var quantity = val.Quantity || 1; 
+        sum += parseInt(val.Price) * quantity; 
+      });
+
+      cartdesctitle.innerHTML = sum; 
+    }
+
+    function removeCart(i) {
+      arry.splice(i, 1);
+      cartDatas();
+    }
+
+    
+    cartDatas();
+
+    
+  </script>
+</body>
+</html>
